@@ -1,28 +1,7 @@
-Только сама сериалиализация и десериализация.
-Все типы работают.
-Формат: properties
-Пример:
-а=10
-b=20
-s=qwefgtr
-cd=3.456
+@Exported annotation means that class can be serialized and deserialized.
+@PropertyName annotation defines a special name of the field in serialization.
+@Ignored annotation tells mapper to skip a field while serialization or deserialization.
+@DateTime annotation defines a special format for Date and Time.
 
-Все аннотации рабоиают (имена в сериализации можно менять, поля игнорировать и тд)
-Обращение идет непосредственно к самим public полям.
-
-list и set примитивов сериализуются через запятую:
-s=3,4,5,6,7,6,4
-Строка выше значит, что был сериализован лист целых чисел 3,4,...,4
-Сет сериализует точно также, но при десериализации все работает корректно - лист становится листом, в сет - сетом.
-
-Полем объекта может быть другой сериализуемый объект.
-В этом случае строковое представление объекта будет такое:
-Все поля внешнего родителя до поля внутреннего объекта...
-Все поля внутреннего объекта...
-Все остальные поля внешнего обхекта...
-
-Перед каждым именем поля объекта в строке (даже если поля помечено для изменения имени) - идет адрес класса с этими полями;
-Это сделано для случая когда поля внешнего и внутреннего класса называются одинаково. Пример в файле text1.txt рядом.
-Имя класса отделяется от имени поля ||| символами, то есть чистаемость вполне сохраняется.
-То есть все выгдяит так:
-"Имя класса"|||"Имя поля"="Значение поля"
+Before the name of the fields itself the internal path of class id stored. It is done to handle the situation of
+th same-named field of the outer and intern classes. Path and name are separated by "|||".
