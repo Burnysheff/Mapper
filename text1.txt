@@ -1,0 +1,3 @@
+ru.hse.homework4.Example|||a=10
+ru.hse.homework4.Example|||b=20
+ru.hse.homework4.Example|||c=0
